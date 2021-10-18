@@ -1,0 +1,17 @@
+{
+  "name": "block_chain",
+  "version": "1.0.0",
+  "description": "node_block_chain",
+  "main": "start.js",
+  "scripts": {
+    "test": "jest --watchALL"
+  },
+  "author": "rhaymison betini",
+  "license": "ISC",
+  "dependencies": {
+    "crypto-js": "^4.1.1"
+  },
+  "devDependencies": {
+    "jest": "^27.3.0"
+  }
+}
