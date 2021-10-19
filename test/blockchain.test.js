@@ -27,4 +27,10 @@ describe('Blockchain', () => {
         expect(bc.isValidChain(bc2.chain)).toBe(true);
     })
 
+    it('invalidates a chain with currupted geneisBlock', () => {
+        bc2.addBlock('600');
+        bc2.chain[0].hash = '342343243243';
+        expect(bc.isValidChain(bc2.chain)).toBe(false);
+    })
+
 })
