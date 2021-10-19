@@ -9,7 +9,7 @@ describe('Blockchain', () => {
 
     beforeEach(() => {
         bc = new Blockchain;
-        b2 = new Blockchain;
+        bc2 = new Blockchain;
     })
 
     it('start with genesis block', () => {
@@ -23,7 +23,8 @@ describe('Blockchain', () => {
     })
 
     it('is valid blockchain', () => {
-
+        bc2.addBlock('400');
+        expect(bc.isValidChain(bc2.chain)).toBe(true);
     })
 
 })
