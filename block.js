@@ -15,7 +15,13 @@ class Block {
     }
 
     static genesis() {
-        this.genesisBlock = new this(Date.now(), '-------', SHA256('genesis'), [])
+        
+        var data = new Date();
+        var dia = String(data.getDate()).padStart(2, '0');
+        var mes = String(data.getMonth() + 1).padStart(2, '0');
+        var ano = data.getFullYear();
+        var dataAtual = dia + '/' + mes + '/' + ano;
+        this.genesisBlock = new this(dataAtual, '-------', SHA256('genesis'), [])
         return this.genesisBlock;
     }
 
