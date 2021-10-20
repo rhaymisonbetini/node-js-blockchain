@@ -1,5 +1,5 @@
-const Blockchain = require('../blockchain.js')
-const Block = require('../block.js')
+const Blockchain = require('../blockchain/blockchain.js')
+const Block = require('../blockchain/block.js')
 const { it, expect } = require('@jest/globals');
 
 describe('Blockchain', () => {

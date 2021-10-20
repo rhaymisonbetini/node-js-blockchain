@@ -1,4 +1,4 @@
-const Block = require('../block.js');
+const Block = require('../blockchain/block.js');
 const { it, expect } = require('@jest/globals');
 
 describe('Block', () => {

@@ -4,12 +4,16 @@
   "description": "node_block_chain",
   "main": "start.js",
   "scripts": {
-    "test": "jest --watchALL"
+    "test": "jest --watchALL",
+    "start": "node ./app",
+    "dev": "node ./app"
   },
   "author": "rhaymison betini",
   "license": "ISC",
   "dependencies": {
-    "crypto-js": "^4.1.1"
+    "crypto-js": "^4.1.1",
+    "express": "^4.17.1",
+    "ws": "^8.2.3"
   },
   "devDependencies": {
     "jest": "^27.3.0"
