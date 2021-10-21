@@ -1,6 +1,5 @@
 const Block = require('../blockchain/block.js');
 const { it, expect } = require('@jest/globals');
-const { DIFFICULT } = require('../config.js');
 
 
 describe('Block', () => {
@@ -20,7 +19,15 @@ describe('Block', () => {
     })
 
     it('generates hash tath matches the difficulty hash', () => {
-        expect(block.hash.substring(0, DIFFICULT)).toEqual('0'.repeat(DIFFICULT));
+        expect(block.hash.substring(0, block.difficulty)).toEqual('0'.repeat(block.difficulty));
+    })
+
+    it('lowers the difficulty for slowly mined blocks', () => {
+        expect(Block.adjustDifficulty(block, block.timestamp + 360000)).toEqual(block.difficulty - 1);
+    })
+
+    it('increments the difficulty for quicly mined blocks', () => {
+        expect(Block.adjustDifficulty(block, block.timestamp + 1)).toEqual(block.difficulty + 1);
     })
 
 })
