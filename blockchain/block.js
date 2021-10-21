@@ -1,12 +1,14 @@
 const SHA256 = require('crypto-js/sha256');
+const DIFFICULT = 4;
 
 class Block {
 
-    constructor(timestamp, lastHash, hash, data) {
+    constructor(timestamp, lastHash, hash, data, nonce) {
         this.timestamp = timestamp;
         this.lastHash = lastHash;
         this.hash = hash;
         this.data = data;
+        this.nonce = nonce;
         this.genesisBlock;
     }
 
@@ -22,24 +24,34 @@ class Block {
         var ano = data.getFullYear();
         var dataAtual = dia + '/' + mes + '/' + ano;
 
-        this.genesisBlock = new this(dataAtual, '-------', this.hash(dataAtual, '_______', []), [])
+        this.genesisBlock = new this(dataAtual, '-------', this.hash(dataAtual, '_______', []), [], 0)
         return this.genesisBlock;
     }
 
     static mineBlock(lastBlock, data) {
-        const timestamp = Date.now();
+
+        let hasher, timestamp;
         const lastHash = lastBlock.hash;
-        const hash = this.hash(timestamp, lastHash, data);
-        return new this(timestamp, lastHash, hash, data);
+        let nonce = 0;
+
+        do {
+
+            nonce++;
+            timestamp = Date.now();
+            hasher = Block.hash(timestamp, lastHash, data, nonce);
+
+        } while (hash.substring(0, DIFFICULT) !== '0'.repeat(DIFFICULT));
+
+        return new this(timestamp, lastHash, hash, data, nonce);
     }
 
-    static hash(timestamp, lastHash, data) {
-        return SHA256(`${timestamp}${lastHash}${data}`).toString();
+    static hash(timestamp, lastHash, data, nonce) {
+        return SHA256(`${timestamp}${lastHash}${data}${nonce}`).toString();
     }
 
     static blockHash(block) {
-        const { timestamp, lastHash, data } = block
-        return Block.hash(timestamp, lastHash, data);
+        const { timestamp, lastHash, data, nonce } = block
+        return Block.hash(timestamp, lastHash, data, nonce);
     }
 
 }
