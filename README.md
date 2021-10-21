@@ -8,10 +8,10 @@ You must have two instances of the system running on one machine.
 
 # How to install.
 Clone the project on your machine.
-Copy the project into a new folder called node-js-blockchain
+Copy the project into a new folder called node-js-blockchain_2
 Run npm install within both projects.
 
-On node-js-blockchain in the app\p2p-server.js file, make the activation of the
+On node-js-blockchain_2 in the app\p2p-server.js file, make the activation of the
 P2P port for 5002.
 
 Okay, now you will have two servers running on your system and thus a scoket tunnel will be opened for communication between them.
