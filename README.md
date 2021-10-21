@@ -1,5 +1,7 @@
 # node-js-blockchain
 
+<img src="https://tm.ibxk.com.br/2020/08/27/27210957998421.jpg?ims=1120x420"/>
+
 This project is about a Blockchain application totally in Node.js with javascript.
 
 The project demonstrates the formation of a blockchain chain on a p2p server. Proof of work concepts and blockchain validations (Byzantine failure) were implemented.
